@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bus Dodge Game</title>
+    <title>Afnan's Dodge Game</title>
+    <link rel="icon" href="afnan-driving.png">
     <style>
         body {
             margin: 0;
@@ -126,13 +127,14 @@
     <div id="gameWrap">
         <canvas id="gc" width="360" height="520"></canvas>
         <div id="passwordOverlay">
-            <h2>Enter Password</h2>
-            <input type="password" id="passwordInput" placeholder="Password" autofocus>
+            <h2>Are you Afnan?</h2>
+            <p>Type your name below to start!</p>
+            <input type="text" id="passwordInput" placeholder="Type your name" autofocus>
             <p class="error" id="passwordError"></p>
-            <button class="overlay-btn" id="passwordBtn">Submit</button>
+            <button class="overlay-btn" id="passwordBtn">Let's Go!</button>
         </div>
         <div id="overlay">
-            <h2>Bus Dodge</h2>
+            <h2>Afnan's Car</h2>
             <p>Dodge the Minecraft cars as long as you can!</p>
             <button class="overlay-btn" id="startBtn">Start Game</button>
         </div>
