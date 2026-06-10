@@ -204,7 +204,7 @@
         const passwordError = document.getElementById('passwordError');
 
         function checkPassword() {
-            if (passwordInput.value === 'afnan') {
+            if (passwordInput.value.toLowerCase() === 'afnan') {
                 passwordOverlay.style.display = 'none';
                 overlay.style.display = 'flex';
                 passwordError.textContent = '';
