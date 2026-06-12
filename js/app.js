@@ -2,8 +2,9 @@ const GAMES = [
     { id: 'dodge', name: 'Dodge Game', desc: 'Dodge the Minecraft cars!', icon: '🚗', unlocked: true },
     { id: 'flagquiz', name: 'World Flag Match', desc: 'Match flags to country outlines!', icon: '🌍', unlocked: true },
     { id: 'p1', name: 'Coming Soon', desc: 'New game on the way!', icon: '🔒', unlocked: false },
-    { id: 'p2', name: 'Coming Soon', desc: 'New game on the way!', icon: '🔒', unlocked: false },
 ];
+
+let userName = '';
 
 function showScreen(name) {
     document.getElementById('passwordScreen').style.display = 'none';
@@ -12,16 +13,28 @@ function showScreen(name) {
     document.getElementById('modeScreen').style.display = 'none';
     document.getElementById('quizArea').style.display = 'none';
 
+    let target = null;
     if (name === 'password') {
-        document.getElementById('passwordScreen').style.display = 'flex';
+        target = document.getElementById('passwordScreen');
+        target.style.display = 'flex';
     } else if (name === 'hub') {
-        document.getElementById('hubScreen').style.display = 'flex';
+        target = document.getElementById('hubScreen');
+        target.style.display = 'flex';
     } else if (name === 'game') {
-        document.getElementById('gameArea').style.display = 'flex';
+        target = document.getElementById('gameArea');
+        target.style.display = 'flex';
     } else if (name === 'mode') {
-        document.getElementById('modeScreen').style.display = 'flex';
+        target = document.getElementById('modeScreen');
+        target.style.display = 'flex';
     } else if (name === 'quiz') {
-        document.getElementById('quizArea').style.display = 'flex';
+        target = document.getElementById('quizArea');
+        target.style.display = 'flex';
+    }
+
+    if (target) {
+        target.classList.remove('screen-enter');
+        void target.offsetWidth;
+        target.classList.add('screen-enter');
     }
 }
 
@@ -34,6 +47,7 @@ function goBackToMenu() {
 function renderHub() {
     const grid = document.getElementById('hubGrid');
     grid.innerHTML = '';
+    document.getElementById('hubWelcome').textContent = `Welcome back, ${userName}! 🎮`;
     GAMES.forEach(g => {
         const card = document.createElement('div');
         card.className = 'hub-card' + (g.unlocked ? '' : ' locked');
@@ -65,12 +79,13 @@ function checkPassword() {
     const input = document.getElementById('passwordInput');
     const error = document.getElementById('passwordError');
     if (input.value.toLowerCase() === 'afnan') {
+        userName = input.value.charAt(0).toUpperCase() + input.value.slice(1).toLowerCase();
         input.value = '';
         error.textContent = '';
         renderHub();
         showScreen('hub');
     } else {
-        error.textContent = 'Incorrect password';
+        error.textContent = 'Hmm, that\'s not quite right';
         input.value = '';
         input.focus();
     }
@@ -93,5 +108,11 @@ document.getElementById('passwordInput').addEventListener('keydown', e => {
 });
 
 document.getElementById('backBtn').addEventListener('click', goBackToMenu);
+
+document.getElementById('hubLogoutBtn').addEventListener('click', () => {
+    DodgeGame.stop();
+    FlagQuizGame.stop();
+    showScreen('password');
+});
 
 showScreen('password');

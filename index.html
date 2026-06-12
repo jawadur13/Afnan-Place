@@ -3,20 +3,26 @@
 <head>
     <title>Afnan's Game Hub</title>
     <link rel="icon" href="assets/afnan-driving.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <div id="passwordScreen">
-        <h2>Are you Afnan?</h2>
-        <p>Type your name below to start!</p>
-        <input type="text" id="passwordInput" placeholder="Type your name" autofocus>
+        <h2>🌟 Welcome!</h2>
+        <p>Type your name to enter</p>
+        <input type="text" id="passwordInput" placeholder="Your name" autofocus>
         <p class="error" id="passwordError"></p>
         <button class="overlay-btn" id="passwordBtn">Let's Go!</button>
     </div>
 
     <div id="hubScreen">
-        <h2 id="hubTitle">Afnan's Game Hub</h2>
+        <div id="hubTopBar">
+            <span id="hubWelcome"></span>
+            <button id="hubLogoutBtn">Logout</button>
+        </div>
         <div class="hub-grid" id="hubGrid"></div>
     </div>
 
