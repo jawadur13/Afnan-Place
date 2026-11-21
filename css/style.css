@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    overflow-x: hidden;
     background: #1a1a2e;
     display: flex;
     flex-direction: column;
@@ -24,6 +25,8 @@ body {
 
 #gc {
     display: block;
+    width: min(360px, calc(100vw - 24px), calc((100dvh - 170px) * 360 / 520));
+    height: auto;
     border-radius: 8px;
     background: #3a3a3a;
 }
@@ -156,6 +159,7 @@ body {
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 24px;
     padding: 40px 48px;
+    width: min(400px, calc(100vw - 32px));
     text-align: center;
     position: relative;
     box-shadow: 0 8px 40px rgba(0,0,0,0.3);
@@ -184,6 +188,7 @@ body {
     font-size: 17px;
     text-align: center;
     width: 240px;
+    max-width: 100%;
     outline: none;
     margin-bottom: 12px;
     transition: border-color 0.3s, box-shadow 0.3s;
@@ -335,6 +340,7 @@ body {
 
 #gameToolbar {
     width: 360px;
+    max-width: calc(100vw - 24px);
     display: flex;
     justify-content: flex-start;
     margin-bottom: 4px;
@@ -644,6 +650,37 @@ body {
 }
 
 @media (max-width: 480px) {
+    #passwordCard {
+        padding: 32px 20px;
+    }
+    #passwordCard h2 {
+        font-size: 28px;
+    }
+    #hubScreen {
+        padding: 24px 16px;
+    }
+    #hubTopBar {
+        margin-bottom: 20px;
+    }
+    .hub-grid {
+        gap: 12px;
+    }
+    .hub-card {
+        padding: 20px 10px 16px;
+    }
+    .hub-icon {
+        font-size: 38px;
+    }
+    .hub-play-btn {
+        padding: 8px 22px;
+    }
+    #modeTitle {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    .ctrl-btn {
+        padding: 14px 40px;
+    }
     .mode-cards {
         flex-direction: column;
         align-items: center;
@@ -659,9 +696,21 @@ body {
     #flagGrid {
         width: 300px;
     }
+    #quizHUD {
+        font-size: 13px;
+    }
+    #timerBarBg {
+        width: 56px;
+    }
     .flag-img {
         width: 70px;
         height: 42px;
+    }
+}
+
+@media (max-width: 340px) {
+    .hub-grid {
+        grid-template-columns: 1fr;
     }
 }
 
